@@ -1,14 +1,12 @@
-package com.example.rest_api_retrofit_android
+package com.example.rest_api_retrofit_android.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import androidx.databinding.BindingBuildInfo
-import androidx.databinding.DataBindingUtil
+import com.example.rest_api_retrofit_android.R
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {

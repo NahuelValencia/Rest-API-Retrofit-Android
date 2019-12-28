@@ -1,9 +1,10 @@
-package com.example.rest_api_retrofit_android
+package com.example.rest_api_retrofit_android.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.rest_api_retrofit_android.R
 
 class SplashScreenActivity : AppCompatActivity() {
     private val SPLASH_TIME_OUT: Long = 3000 // 3 sec
