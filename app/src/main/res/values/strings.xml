@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Rest-API-Retrofit-Android</string>
     <string name="github_api">GitHub API</string>
-    <string name="user_name">user name</string>
+    <string name="user_name">user name:</string>
     <string name="log_in">Log in</string>
+    <string name="repositories">Repositories</string>
 </resources>
