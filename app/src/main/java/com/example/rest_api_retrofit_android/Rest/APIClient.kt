@@ -3,11 +3,11 @@ package com.example.rest_api_retrofit_android.Rest
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class APIClient {
+object  APIClient {
     val BASE_URL = "https://api.github.com/"
     var retrofit: Retrofit? = null
 
-    fun getCient(): Retrofit {
+    fun getClient(): Retrofit {
 
         if (retrofit == null) {
             retrofit = Retrofit.Builder()
