@@ -1,6 +1,7 @@
 package com.example.rest_api_retrofit_android.Activity
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -11,9 +12,11 @@ import com.example.rest_api_retrofit_android.Model.GitHubUser
 import com.example.rest_api_retrofit_android.R
 import com.example.rest_api_retrofit_android.Rest.APIClient
 import com.example.rest_api_retrofit_android.Rest.GitHubUserEndPoints
+import com.example.rest_api_retrofit_android.Utilitis.ImageDownloader
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.ByteArrayOutputStream
 
 var resp: GitHubUser? = null
 
@@ -47,7 +50,16 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
                 override fun onResponse(call: Call<GitHubUser>, response: Response<GitHubUser>) {
                     resp = response.body()
-                    getUser(loginActivity)
+
+                    var image: Bitmap? = null
+                    val task = ImageDownloader()
+                    try {
+                        image = task.execute(resp?.displayAvatar).get()
+                    } catch (e: Exception) {
+                        e.stackTrace
+                    }
+
+                    getUser(loginActivity, image)
                 }
 
                 override fun onFailure(call: Call<GitHubUser>, t: Throwable) {
@@ -58,8 +70,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun getUser(loginActivity: LoginActivity) {
+    private fun getUser(loginActivity: LoginActivity, image: Bitmap?) {
         val intent = Intent(loginActivity, UserActivity::class.java)
+
+        val stream = ByteArrayOutputStream()
+        image?.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        val byteArray: ByteArray = stream.toByteArray()
+
+        intent.putExtra("image", byteArray)
         startActivity(loginActivity, intent, null)
     }
 }

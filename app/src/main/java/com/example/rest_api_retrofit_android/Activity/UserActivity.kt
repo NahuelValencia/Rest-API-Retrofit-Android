@@ -1,13 +1,16 @@
 package com.example.rest_api_retrofit_android.Activity
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.rest_api_retrofit_android.Model.GitHubUser
 import com.example.rest_api_retrofit_android.R
+
 
 class UserActivity : AppCompatActivity() {
 
@@ -35,7 +38,10 @@ class UserActivity : AppCompatActivity() {
         email = findViewById(R.id.email)
         ownedRepos = findViewById(R.id.btn_owned_repos)
 
-        response?.let { render(it) }
+        val byteArray = intent.getByteArrayExtra("image")
+        val bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+
+        response?.let { render(it, bmp) }
 
     }
 
@@ -45,7 +51,14 @@ class UserActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun render(user: GitHubUser) {
+    private fun render(
+        user: GitHubUser,
+        image: Bitmap?
+    ) {
+
+        avatar.setImageBitmap(image)
+        avatar.layoutParams.height = 220
+        avatar.layoutParams.width = 220
 
         userName.text = "${getString(R.string.user_name)}: ${user.displayUserName}"
 

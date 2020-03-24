@@ -1,6 +1,5 @@
 package com.example.rest_api_retrofit_android.Model
 
-import android.util.Log
 import com.google.gson.annotations.SerializedName
 
 class GitHubUser(
