@@ -14,13 +14,13 @@ class GitHubUser(
     val userName: String,
 
     @SerializedName("email")
-    val userEmail: String,
+    val userEmail: String?,
 
     @SerializedName("followers")
-    val followers: String,
+    val followers: Int,
 
     @SerializedName("following")
-    val following: String,
+    val following: Int,
 
     @SerializedName("login")
     val login: String
@@ -35,13 +35,13 @@ class GitHubUser(
     val displayUserName: String
         get() = userName
 
-    val displayUserEmail: String
+    val displayUserEmail: String?
         get() = userEmail
 
-    val displayFollowers: String
+    val displayFollowers: Int
         get() = followers
 
-    val displayFollowing: String
+    val displayFollowing: Int
         get() = following
 
     val displayLogin: String

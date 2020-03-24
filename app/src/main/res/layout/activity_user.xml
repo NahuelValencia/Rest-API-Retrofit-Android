@@ -19,25 +19,29 @@
             style="@android:style/TextAppearance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            tools:text="NahuelValencia"/>
 
     <TextView
             android:id="@+id/followers"
             style="@android:style/TextAppearance"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:text="10"/>
 
     <TextView
             android:id="@+id/following"
             style="@android:style/TextAppearance"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:text="12"/>
 
     <TextView
             android:id="@+id/email"
             style="@android:style/TextAppearance"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:text="nahuel.valencia21@gmail.com"/>
 
     <Button
             android:id="@+id/btn_owned_repos"
