@@ -24,8 +24,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         btnLogin.setOnClickListener(this)
     }
 
-    override fun onClick(p0: View?) {
-        when (p0?.id) {
+    override fun onClick(view: View?) {
+        when (view?.id) {
             R.id.btn_login -> getUser()
         }
     }

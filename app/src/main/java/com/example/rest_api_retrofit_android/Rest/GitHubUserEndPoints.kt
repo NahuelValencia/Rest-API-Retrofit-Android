@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface GitHubUserEndPoints {
 
-    @GET("/user/{user}")
+    @GET("/users/{user}")
     fun getUser(@Path("user") user: String): Call<GitHubUser>
 
 }

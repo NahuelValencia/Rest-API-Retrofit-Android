@@ -32,8 +32,8 @@ class UserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
 
-        val actionBar = supportActionBar
-        actionBar!!.title = "User Activity"
+        val actionBar = supportActionBar ?: return
+        actionBar.title = "User Activity"
         actionBar.setDisplayHomeAsUpEnabled(true)
 
         extras = intent.extras!!
@@ -60,24 +60,25 @@ class UserActivity : AppCompatActivity() {
         val apiService: GitHubUserEndPoints =
             APIClient.getClient().create(GitHubUserEndPoints::class.java)
 
-        val call: Call<GitHubUser> = apiService.getUser(userName.toString()).also {
+        apiService.getUser(userName.text.toString()).also {
             it.enqueue(object : Callback<GitHubUser> {
-                @SuppressLint("SetTextI18n")
+
                 override fun onResponse(call: Call<GitHubUser>, response: Response<GitHubUser>) {
 
                     if (response.body()?.displayUserName == null) {
-                        userName.text = "No name provided"
+                        userName.text = getString(R.string.no_name_provided)
                     } else {
-                        userName.text = "User name: ${response.body()?.displayUserName}"
+                        userName.text = "${getString(R.string.user_name)}: ${response.body()?.displayUserName}"
                     }
-                    followers.text = "Followers: ${response.body()?.displayFollowers}"
-                    following.text = "Following: ${response.body()?.displayFollowing}"
-                    logIn.text = "LogIn: ${response.body()?.displayLogin}"
+
+                    followers.text = "${getString(R.string.followers)}: ${response.body()?.displayFollowers}"
+                    following.text = "${getString(R.string.following)}: ${response.body()?.displayFollowing}"
+                    logIn.text = "${getString(R.string.log_in)}: ${response.body()?.displayLogin}"
 
                     if (response.body()?.displayUserName == null) {
-                        email.text = "No E-mal provided"
+                        email.text = getString(R.string.no_email_provided)
                     } else {
-                        email.text = "E-mail: ${response.body()?.displayUserEmail}"
+                        email.text = "${getString(R.string.email)}: ${response.body()?.displayUserEmail}"
                     }
                 }
 
