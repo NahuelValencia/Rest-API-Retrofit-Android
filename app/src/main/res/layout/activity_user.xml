@@ -1,57 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/gray_300"
-        android:orientation="vertical"
-        android:padding="20dp"
-        tools:context=".Activity.UserActivity">
+        android:layout_height="wrap_content">
 
-    <ImageView
-            android:id="@+id/user_avatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    <TextView
-            android:id="@+id/username"
-            style="@android:style/TextAppearance"
-            android:layout_width="wrap_content"
+    <LinearLayout
+            android:id="@+id/user_info"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            tools:text="NahuelValencia"/>
+            android:background="@color/gray_300"
+            android:orientation="vertical"
+            android:padding="20dp"
+            tools:context=".Activity.UserActivity">
 
-    <TextView
-            android:id="@+id/followers"
-            style="@android:style/TextAppearance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="10"/>
+        <ImageView
+                android:id="@+id/user_avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-    <TextView
-            android:id="@+id/following"
-            style="@android:style/TextAppearance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="12"/>
+        <TextView
+                android:id="@+id/username"
+                style="@android:style/TextAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                tools:text="NahuelValencia" />
 
-    <TextView
-            android:id="@+id/email"
-            style="@android:style/TextAppearance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="nahuel.valencia21@gmail.com"/>
+        <TextView
+                android:id="@+id/followers"
+                style="@android:style/TextAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="10" />
 
-    <Button
-            android:id="@+id/btn_owned_repos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:text="@string/repositories"
-            android:textAllCaps="false"
-            android:textSize="16sp" />
+        <TextView
+                android:id="@+id/following"
+                style="@android:style/TextAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="12" />
+
+        <TextView
+                android:id="@+id/email"
+                style="@android:style/TextAppearance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="nahuel.valencia21@gmail.com" />
+
+        <Button
+                android:id="@+id/btn_owned_repos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:text="@string/repositories"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
 
 
-</LinearLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+</RelativeLayout>

@@ -1,6 +1,8 @@
 package com.example.rest_api_retrofit_android.Activity
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -8,8 +10,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.example.rest_api_retrofit_android.Model.GitHubUser
 import com.example.rest_api_retrofit_android.R
+import java.io.ByteArrayOutputStream
 
 
 class UserActivity : AppCompatActivity() {
@@ -20,8 +24,6 @@ class UserActivity : AppCompatActivity() {
     lateinit var following: TextView
     lateinit var email: TextView
     lateinit var ownedRepos: Button
-
-    private val response = resp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +40,7 @@ class UserActivity : AppCompatActivity() {
         email = findViewById(R.id.email)
         ownedRepos = findViewById(R.id.btn_owned_repos)
 
-        val byteArray = intent.getByteArrayExtra("image")
-        val bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
-
-        response?.let { render(it, bmp) }
+        user?.let { render(it) }
 
     }
 
@@ -51,12 +50,11 @@ class UserActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun render(
-        user: GitHubUser,
-        image: Bitmap?
-    ) {
+    private fun render(user: GitHubUser) {
 
-        avatar.setImageBitmap(image)
+        val userImage = decodeImage(byteArray)
+
+        avatar.setImageBitmap(userImage)
         avatar.layoutParams.height = 220
         avatar.layoutParams.width = 220
 
@@ -65,10 +63,34 @@ class UserActivity : AppCompatActivity() {
         followers.text = "${getString(R.string.followers)}: ${user.displayFollowers}"
         following.text = "${getString(R.string.following)}: ${user.displayFollowing}"
 
-        if (user.displayUserEmail == null) {
-            email.text = "${getString(R.string.email)}: ${getString(R.string.no_email_provided)}"
-        } else {
-            email.text = "${getString(R.string.email)}: ${user.displayUserEmail}"
+        val userEmail = user.displayUserEmail?.let {
+            "${getString(R.string.email)}: $it"
+        } ?: "${getString(R.string.email)}: ${getString(R.string.no_email_provided)}"
+
+        email.text = userEmail
+    }
+
+    private fun decodeImage(image: ByteArray?): Bitmap? {
+        val byteArray = image ?: return null
+        return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+    }
+
+    companion object {
+        private var user: GitHubUser? = null
+        private var userImage: Bitmap? = null
+        private var byteArray: ByteArray? = null
+
+        fun screenBuilder(context: Context, user: GitHubUser, image: Bitmap?) {
+            this.user = user
+            this.userImage = image ?: return
+
+            val intent = Intent(context, UserActivity::class.java)
+
+            val stream = ByteArrayOutputStream()
+            userImage!!.compress(Bitmap.CompressFormat.PNG, 100, stream)
+            byteArray = stream.toByteArray()
+
+            startActivity(context, intent, null)
         }
     }
 }

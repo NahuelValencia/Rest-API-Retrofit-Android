@@ -10,4 +10,7 @@ interface GitHubUserEndPoints {
     @GET("/users/{user}")
     fun getUser(@Path("user") user: String): Call<GitHubUser>
 
+    @GET("/users/{user}/repositories")
+    fun getRepositories(@Path("user") user: String): Call<GitHubUser>
+
 }
