@@ -7,7 +7,7 @@ import android.os.Handler
 import com.example.rest_api_retrofit_android.R
 
 class SplashScreenActivity : AppCompatActivity() {
-    private val SPLASH_TIME_OUT: Long = 3000 // 3 sec
+    private val TIME_OUT: Long = 3000 // 3 sec
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
@@ -18,6 +18,6 @@ class SplashScreenActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             // close this activity
             finish()
-        }, SPLASH_TIME_OUT)
+        }, TIME_OUT)
     }
 }

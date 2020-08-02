@@ -1,33 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout
-            xmlns:tools="http://schemas.android.com/tools"
-            android:background="#464545"
+
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#464545"
             tools:context=".Activity.SplashScreenActivity">
 
         <ImageView
-                android:id="@+id/image"
-                android:src="@drawable/github_splash_screen"
+                android:id="@+id/GH_image"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_centerInParent="true"/>
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="90dp"
+                android:src="@drawable/github_splash_screen" />
+
         <TextView
-                android:id="@+id/text"
-                android:textColor="#fff"
+                android:id="@+id/GH_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/GH_image"
+                android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text="@string/github_api"
-                android:layout_below="@id/image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        <ProgressBar
-                android:layout_below="@id/text"
+                android:textColor="#fff" />
+
+        <ImageView
+                android:id="@+id/SO_image"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/GH_text"
                 android:layout_centerHorizontal="true"
-                android:padding="6dp"
+                android:src="@drawable/stack_overflow" />
+
+        <TextView
+                android:id="@+id/SO_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/SO_image"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/stackoverflow_api"
+                android:textColor="#fff" />
+
+        <ProgressBar
                 android:layout_width="45dp"
-                android:layout_height="45dp"/>
+                android:layout_height="45dp"
+                android:layout_below="@id/SO_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:padding="6dp" />
 
     </RelativeLayout>
 </layout>
