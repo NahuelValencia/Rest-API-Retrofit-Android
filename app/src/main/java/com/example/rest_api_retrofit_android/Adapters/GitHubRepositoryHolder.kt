@@ -1,5 +1,6 @@
 package com.example.rest_api_retrofit_android.Adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -26,12 +27,13 @@ class GitHubRepositoryHolder(inflater: LayoutInflater, parent: ViewGroup) :
         modified = itemView.findViewById(R.id.last_modified)
     }
 
+    @SuppressLint("SetTextI18n")
     fun bind(repository: GitHubRepository) {
-        name?.text = repository.repositoryName
-        description?.text = repository.repoDescription
-        language?.text = repository.languageProgramming
-        url?.text = repository.repositoryUrl
-        created?.text = repository.creation
-        modified?.text = repository.modified
+        name!!.text = "${itemView.context.getString(R.string.repoName)} ${repository.repositoryName}"
+        description!!.text = "${itemView.context.getString(R.string.description)} ${repository.repoDescription}"
+        language!!.text = "${itemView.context.getString(R.string.language)} ${repository.languageProgramming}"
+        url!!.text = "${itemView.context.getString(R.string.repoUrl)} ${repository.repositoryUrl}"
+        created!!.text = "${itemView.context.getString(R.string.created)} ${repository.creation}"
+        modified!!.text = "${itemView.context.getString(R.string.modified)} ${repository.modified}"
     }
 }

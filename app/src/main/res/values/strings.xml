@@ -5,10 +5,14 @@
     <string name="email">E-mail</string>
     <string name="log_in">Log in</string>
     <string name="repositories">Repositories</string>
-
-
     <string name="no_name_provided">No name provided</string>
     <string name="no_email_provided">No E-mal provided</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
+    <string name="repoName">Name:</string>
+    <string name="description">Description:</string>
+    <string name="language">Language:</string>
+    <string name="repoUrl">Url:</string>
+    <string name="created">Created on:</string>
+    <string name="modified">Las modified on:</string>
 </resources>
