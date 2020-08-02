@@ -4,25 +4,25 @@ import com.google.gson.annotations.SerializedName
 
 class GitHubUser(
     @SerializedName("id") //indica que el elemento id tiene que ser serializado a json. Tine que tener el mismo nombre que la respuesta de la API
-    val id: Long,
+    private val id: Long,
 
     @SerializedName("avatar_url")
-    val avatar: String,
+    private val avatar: String,
 
     @SerializedName("name")
-    val userName: String,
+    private val userName: String,
 
     @SerializedName("email")
-    val userEmail: String?,
+    private val userEmail: String?,
 
     @SerializedName("followers")
-    val followers: Int,
+    private val followers: Int,
 
     @SerializedName("following")
-    val following: Int,
+    private val following: Int,
 
     @SerializedName("login")
-    val login: String
+    private val login: String
 ) {
 
     val getId: Long
@@ -43,7 +43,7 @@ class GitHubUser(
     val displayFollowing: Int
         get() = following
 
-    val displayLogin: String
+    val loginName: String
         get() = login
 
 }

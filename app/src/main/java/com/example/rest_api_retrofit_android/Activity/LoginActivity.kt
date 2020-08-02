@@ -62,8 +62,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 override fun onFailure(call: Call<GitHubUser>, t: Throwable) {
-                    Log.i("GithubCall", "Fail call to github api")
-                    Log.i("GithubCall Error", t.message)
+                    Log.e("GithubCall", "Fail call to github api")
+                    Log.e("GithubCall Error", t.message.toString())
                 }
 
             })
